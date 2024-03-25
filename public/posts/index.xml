@@ -6,8 +6,15 @@
     <description>Recent content in Posts on John&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 25 Mar 2024 09:57:59 +1100</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2024 09:08:10 +1100</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writing Math With Hugo</title>
+      <link>http://localhost:1313/posts/writing-math-with-hugo/</link>
+      <pubDate>Tue, 26 Mar 2024 09:08:10 +1100</pubDate>
+      <guid>http://localhost:1313/posts/writing-math-with-hugo/</guid>
+      <description>Math {{ &amp;lt; math &amp;gt; }} $$ \begin{bmatrix} a &amp;amp; b \ c &amp;amp; d \ e &amp;amp; f \ \end{bmatrix} $$ {{ &amp;lt; /math &amp;gt; }}</description>
+    </item>
     <item>
       <title>Using Hugo to generate my static blog</title>
       <link>http://localhost:1313/posts/using-hugo/</link>
@@ -15,7 +22,7 @@
       <guid>http://localhost:1313/posts/using-hugo/</guid>
       <description>Using Hugo I initially created a small blog using Svelte + Firebase to generate a static website for my blog, however the development effort required to build up a static website caused too much friction. I wanted to create blog posts fast, and found Hugo to support Code blocks with syntax highlighting out of the box.
 Example Code block:
-#include&amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello, World&amp;#34; &amp;lt;&amp;lt; endl; return 0; } Using math notations using in Markdown using LaTeX or TeX required some configuration.</description>
+#include&amp;lt;iostream&amp;gt; using namespace std; int main() { cout &amp;lt;&amp;lt; &amp;#34;Hello, World&amp;#34; &amp;lt;&amp;lt; endl; return 0; } Using math notations using in Markdown using LaTeX or TeX requires some configuration and research, in which I will go into in the the next blog post.</description>
     </item>
   </channel>
 </rss>

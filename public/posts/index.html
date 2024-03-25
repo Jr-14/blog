@@ -57,6 +57,7 @@
 
     </style>
 </noscript>
+
 </head>
 
 <body class="list" id="top">
@@ -111,6 +112,24 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2 class="entry-hint-parent">Writing Math With Hugo
+      <span class="entry-hint" title="Draft">
+        <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
+          <path
+            d="M160-410v-60h300v60H160Zm0-165v-60h470v60H160Zm0-165v-60h470v60H160Zm360 580v-123l221-220q9-9 20-13t22-4q12 0 23 4.5t20 13.5l37 37q9 9 13 20t4 22q0 11-4.5 22.5T862.09-380L643-160H520Zm300-263-37-37 37 37ZM580-220h38l121-122-18-19-19-18-122 121v38Zm141-141-19-18 37 37-18-19Z" />
+        </svg>
+      </span>
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Math {{ &lt; math &gt; }} $$ \begin{bmatrix} a &amp; b \ c &amp; d \ e &amp; f \ \end{bmatrix} $$ {{ &lt; /math &gt; }}</p>
+  </div>
+  <footer class="entry-footer"><span title='2024-03-26 09:08:10 +1100 AEDT'>March 26, 2024</span></footer>
+  <a class="entry-link" aria-label="post link to Writing Math With Hugo" href="http://localhost:1313/posts/writing-math-with-hugo/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2 class="entry-hint-parent">Using Hugo to generate my static blog
       <span class="entry-hint" title="Draft">
         <svg xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 -960 960 960" fill="currentColor">
@@ -123,7 +142,7 @@
   <div class="entry-content">
     <p>Using Hugo I initially created a small blog using Svelte &#43; Firebase to generate a static website for my blog, however the development effort required to build up a static website caused too much friction. I wanted to create blog posts fast, and found Hugo to support Code blocks with syntax highlighting out of the box.
 Example Code block:
-#include&lt;iostream&gt; using namespace std; int main() { cout &lt;&lt; &#34;Hello, World&#34; &lt;&lt; endl; return 0; } Using math notations using in Markdown using LaTeX or TeX required some configuration....</p>
+#include&lt;iostream&gt; using namespace std; int main() { cout &lt;&lt; &#34;Hello, World&#34; &lt;&lt; endl; return 0; } Using math notations using in Markdown using LaTeX or TeX requires some configuration and research, in which I will go into in the the next blog post....</p>
   </div>
   <footer class="entry-footer"><span title='2024-03-25 09:57:59 +1100 AEDT'>March 25, 2024</span></footer>
   <a class="entry-link" aria-label="post link to Using Hugo to generate my static blog" href="http://localhost:1313/posts/using-hugo/"></a>
