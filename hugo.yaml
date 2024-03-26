@@ -1,4 +1,80 @@
-baseURL: https://example.org/
+baseURL: https://jr-14.github.io/blog/
 languageCode: en-us
 title: "JR's Blog"
 theme: "PaperMod"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+mainsections: ["posts"]
+googleAnalytics: UA-123-45
+
+minify:
+  disableXML: true
+  # minifyOutput: true
+
+languages:
+  en:
+    languageName: "English"
+    weight: 1
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
+    menu:
+      main:
+        - name: Archive
+          url: archives
+          weight: 5
+        - name: Search
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  description: "JR's Blog"
+  author: John Emerson Requizo
+
+  defaultTheme: auto
+  # disableThemeToggle: true
+  ShowShareButtons: true
+  ShowReadingTime: true
+  # disableSpecial1stPost: true
+  displayFullLangName: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowAllPagesInArchive: true
+  ShowPageNums: true
+  ShowToc: true
+
+  homeInfoParams:
+    Title: "JR's Blog"
+    Content: >
+      👋 Hi! I'm John and welcome to my blog.
+      Here you'll find an amalgamation of my varying interests.
+
+  socialIcons:
+    - name: github
+      title: View Source on Github
+      url: "https://github.com/Jr-14/blog"
+    - name: LinkedIn
+      title: Connect with me
+      url: "https://www.linkedin.com/in/john-emerson-requizo/"
+    # - name: KoFi
+    #   title: Buy me a Ko-Fi :)
+    #   url: ""

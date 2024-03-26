@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2024-03-26T09:08:10+11:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="fa"
+                href="http://localhost:1313/blog/fa/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="http://localhost:1313/blog/"
+                />
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/</loc>
+    <lastmod>2024-03-26T09:08:10+11:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/writing-math-with-hugo/</loc>
+    <lastmod>2024-03-26T09:08:10+11:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/using-hugo/</loc>
+    <lastmod>2024-03-25T09:57:59+11:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/archives/</loc>
+  </url><url>
+    <loc>http://localhost:1313/blog/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/blog/search/</loc>
+  </url><url>
+    <loc>http://localhost:1313/blog/series/</loc>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/</loc>
+  </url>
+</urlset>
