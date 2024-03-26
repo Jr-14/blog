@@ -1,7 +1,6 @@
 +++
 title = 'Writing Math With Hugo'
 date = 2024-03-26T09:08:10+11:00
-draft = true
 math = 'katex'
 +++
 
