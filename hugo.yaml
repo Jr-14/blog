@@ -1,5 +1,4 @@
 baseURL: https://example.org/
 languageCode: en-us
 title: "JR's Blog"
-theme: "Papermod"
-themesDir: "themes"
+theme: "PaperMod"
