@@ -2,26 +2,36 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://jr-14.github.io/blog/</loc>
+    <loc>http://localhost:1313/blog/tags/competitive-programming/</loc>
+    <lastmod>2024-04-09T22:40:37+10:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/</loc>
+    <lastmod>2024-04-09T22:40:37+10:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/make-equal/</loc>
+    <lastmod>2024-04-09T22:40:37+10:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/math/</loc>
+    <lastmod>2024-04-09T22:40:37+10:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/</loc>
+    <lastmod>2024-04-09T22:40:37+10:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/tags/</loc>
+    <lastmod>2024-04-09T22:40:37+10:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/blog/posts/writing-math-with-hugo/</loc>
     <lastmod>2024-03-26T09:08:10+11:00</lastmod>
   </url><url>
-    <loc>https://jr-14.github.io/blog/posts/</loc>
-    <lastmod>2024-03-26T09:08:10+11:00</lastmod>
-  </url><url>
-    <loc>https://jr-14.github.io/blog/posts/writing-math-with-hugo/</loc>
-    <lastmod>2024-03-26T09:08:10+11:00</lastmod>
-  </url><url>
-    <loc>https://jr-14.github.io/blog/posts/using-hugo/</loc>
+    <loc>http://localhost:1313/blog/posts/using-hugo/</loc>
     <lastmod>2024-03-25T09:57:59+11:00</lastmod>
   </url><url>
-    <loc>https://jr-14.github.io/blog/archives/</loc>
+    <loc>http://localhost:1313/blog/archives/</loc>
   </url><url>
-    <loc>https://jr-14.github.io/blog/categories/</loc>
+    <loc>http://localhost:1313/blog/categories/</loc>
   </url><url>
-    <loc>https://jr-14.github.io/blog/search/</loc>
+    <loc>http://localhost:1313/blog/search/</loc>
   </url><url>
-    <loc>https://jr-14.github.io/blog/series/</loc>
-  </url><url>
-    <loc>https://jr-14.github.io/blog/tags/</loc>
+    <loc>http://localhost:1313/blog/series/</loc>
   </url>
 </urlset>

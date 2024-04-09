@@ -2,10 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Tags on JR&#39;s Blog</title>
-    <link>https://jr-14.github.io/blog/tags/</link>
+    <link>http://localhost:1313/blog/tags/</link>
     <description>Recent content in Tags on JR&#39;s Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="https://jr-14.github.io/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 09 Apr 2024 22:40:37 +1000</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Competitive Programming</title>
+      <link>http://localhost:1313/blog/tags/competitive-programming/</link>
+      <pubDate>Tue, 09 Apr 2024 22:40:37 +1000</pubDate>
+      <guid>http://localhost:1313/blog/tags/competitive-programming/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Math</title>
+      <link>http://localhost:1313/blog/tags/math/</link>
+      <pubDate>Tue, 09 Apr 2024 22:40:37 +1000</pubDate>
+      <guid>http://localhost:1313/blog/tags/math/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>
