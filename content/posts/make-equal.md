@@ -38,3 +38,7 @@ Output $t$ lines, each of which is the answer to the corresponding test case. As
 possible to make the amount of water in all containers the same using the describe operation. Otherwise, output `"NO"`.
 
 ## Working through the problem
+
+I struggled to complete a working solution initially. The key insight to solving this problem is summarised in one
+sentence, and is even found in the problem statement - *The sum of $a_i$ is divisible by $n$*. What this sentence
+indicates is that we can **calculate the average amount of water a bucket can hold and the average will be an integer.**. We can link this to whether we can determine  if it is possible to make the amount of water in all containers the same, 

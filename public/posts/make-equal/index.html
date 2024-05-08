@@ -154,7 +154,7 @@ Quick summary of the problem. There are $n$ containers of water lined up, number
     "math", "competitive programming"
   ],
   "articleBody": "I stumbled upon this problem practicing Competitive Programming on codeforces. The problem can be found here. Feel free to try it yourself 😄.\nWhat I like about this problem is it does not require any specialised math or algorithms and data structures knowledge. It only requires some insight and understanding into what the question is truly asking.\nQuick summary of the problem. There are $n$ containers of water lined up, numbered from left to right from $1$ to $n$. Each container can hold any amount of water; initially the $i$-th container contains $a_i$ units of water. The sum of $a_i$ is divisible by $n$.\nYou can apply the following operation any (possibly zero) number of times: pour any amount of water from the $i$-th container to the $j$-th container, where $i$ must be less than $j$ (i.e. $i",
-  "wordCount" : "319",
+  "wordCount" : "405",
   "inLanguage": "en",
   "datePublished": "2024-04-09T22:40:37+10:00",
   "dateModified": "2024-04-09T22:40:37+10:00",
@@ -298,6 +298,9 @@ sum of $a_i$ is divisible by $n$.</p>
 <p>Output $t$ lines, each of which is the answer to the corresponding test case. As the answer, output <code>&quot;YES&quot;</code> if it is
 possible to make the amount of water in all containers the same using the describe operation. Otherwise, output <code>&quot;NO&quot;</code>.</p>
 <h2 id="working-through-the-problem">Working through the problem<a hidden class="anchor" aria-hidden="true" href="#working-through-the-problem">#</a></h2>
+<p>I struggled to complete a working solution initially. The key insight to solving this problem is summarised in one
+sentence, and is even found in the problem statement - <em>The sum of $a_i$ is divisible by $n$</em>. What this sentence
+indicates is that we can <strong>calculate the average amount of water a bucket can hold and the average will be an integer.</strong>. We can link this to whether we can determine  if it is possible to make the amount of water in all containers the same,</p>
 
 
   </div>
