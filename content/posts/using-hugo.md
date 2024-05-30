@@ -1,7 +1,7 @@
-+++
-title = 'Using Hugo to generate my static blog'
-date = 2024-03-25T09:57:59+11:00
-+++
+---
+title: 'Using Hugo to generate my static blog'
+date: 2024-03-25T09:57:59+11:00
+---
 
 I initially created a small blog using Svelte + Firebase to generate a static website for my blog, however the
 development effort required to build up a static website caused too much friction. I wanted to create blog posts fast,

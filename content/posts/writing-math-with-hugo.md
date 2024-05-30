@@ -1,8 +1,8 @@
-+++
-title = 'Writing Math With Hugo'
-date = 2024-03-26T09:08:10+11:00
-math = 'katex'
-+++
+---
+title: 'Writing Math With Hugo'
+date: '2024-03-26T09:08:10+11:00'
+math: 'katex'
+---
 
 I initially attempted to follow the setup of [mathematics in content management section of
 Hugo](https://gohugo.io/content-management/mathematics/). Not knowing how it worked, I assumed I can copy and paste
