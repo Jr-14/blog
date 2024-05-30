@@ -1,10 +1,13 @@
-+++
-title = 'Cryptopals Set-1 Convert Hex to Base64'
-date = 2024-05-08T19:15:03+10:00
-draft = true
-math = 'katex'
-tags = ['math', 'cryptography', 'cryptopals']
-+++
+---
+title: 'Cryptopals Set-1 Convert Hex to Base64'
+date: 2024-05-08T19:15:03+10:00
+draft: true
+math: 'katex'
+tags:
+  - math
+  - cryptography
+  - cryptopals
+---
 
 # Introduction
 I've been learning Rust with the aid of ['The Rust Book'](https://doc.rust-lang.org/book/), and [Rustlings](https://github.com/rust-lang/rustlings). It's also a good idea to suplement learning by taking on small exercises and projects, so I thought it'd be fun to tackle [Cryptopals](https://cryptopals.com/).
