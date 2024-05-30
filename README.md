@@ -1,6 +1,12 @@
 # Blog
 Another web repository but for a blog
 
+# Getting started
+**IMPORTANT** Make sure you clone this repo correctly as it relies on [papertheme](https://themes.gohugo.io/themes/hugo-paper/)
+```
+git clone --recurse-submodules <REPO_URL>
+```
+
 # Development
 
 ## Starting development server
