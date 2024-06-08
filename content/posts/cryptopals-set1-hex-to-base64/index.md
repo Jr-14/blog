@@ -137,8 +137,76 @@ pub fn hex_to_base64(hex_string: &str) {
 
 ```
 
-There are multiple algorithms that we can use to convert a Hex encoded string into base64 encoding. The naive solution is to:
-- Convert a hex encoded string into an integer (base 10)
-- Convert the integer into base64.
+Here is an illustration of the code above for converting a hexadecimal character to its bit representation.
+![Image alt](images/bit-representation-of-hex-characters.png)
 
-But this isn't correct. The [Wikipedia page for Base64](https://en.wikipedia.org/wiki/Base64) illustrates that Base64 converts three octect groups into four encoded 6 bit characters. We know that each character in our string fits into a byte, we now need to come up with an algorithm that 
+
+We now have an array of bytes (`u8`) that we can convert into a base64 encoded string. Notice that the entire 8 bit of a `u8` is not used, rather only the first 4 bits are used. This is because hexadecimal fits into 4 bits. To convert from hexadecimal to base64, we take 3 chunks of 4 bits and convert into 2 chunks of 6 bits. The [Wikipedia page for Base64](https://en.wikipedia.org/wiki/Base64) illustrates that Base64 chunks the bits into sextets (6 bits) groups and uses the sextets to encode the characters. We can use bit manipulation to convert 3 chunks of 4 bits into 2 chunks of 6 bits, and deal with the remaining bits in the last chunk as padding. Here is the full implementation of the `hex_to_base64` function.
+
+Here is an illustration for the remainder of the code for converting a hexadecimal character from its bit representation to its base64 character.
+![Image alt](images/hex-bits-to-base64.png)
+```rust
+
+pub fn hex_to_base64(hex_string: &str) -> String {
+    let base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+    hex_string
+        .as_bytes()
+        .iter()
+        .map(|byte| hex_value(byte).expect("Invalid hex character"))
+        .collect::<Vec<u8>>()
+        .chunks(3)
+        .fold(String::from(""), |mut acc, chunk| {
+            if chunk.len() == 3 {
+                let first_index: usize = ((chunk[0] << 2) + (chunk[1] >> 2)).into();
+                let second_index: usize = (((chunk[1] & 3) << 4) + (chunk[2])).into();
+                let first_char = base64_chars
+                    .chars()
+                    .nth(first_index)
+                    .expect("No base64 char found");
+                let second_char = base64_chars
+                    .chars()
+                    .nth(second_index)
+                    .expect("No bas64 char found");
+                acc.push(first_char);
+                acc.push(second_char);
+            } else if chunk.len() == 2 {
+                let first_index: usize = ((chunk[0] << 2) + (chunk[1] >> 2)).into();
+                let second_index: usize = ((chunk[1] & 3) << 4).into();
+                let first_char = base64_chars
+                    .chars()
+                    .nth(first_index) 
+                    .expect("No base64 char found");
+                let second_char = base64_chars
+                    .chars()
+                    .nth(second_index)
+                    .expect("No base64 char found");
+                acc.push(first_char);
+                acc.push(second_char);
+                let padding_amount = if acc.len() % 4 == 0 {
+                    0
+                } else {
+                    4 - (acc.len() % 4)
+                };
+                for _ in 0..padding_amount {
+                    acc.push('=');
+                }
+            } else {
+                let first_index: usize = (chunk[0] << 2).into();
+                let first_char = base64_chars
+                    .chars()
+                    .nth(first_index) 
+                    .expect("No base64 char found");
+                acc.push(first_char);
+                let padding_amount = if acc.len() % 4 == 0 {
+                    0
+                } else {
+                    4 - (acc.len() % 4)
+                };
+                for _ in 0..padding_amount {
+                    acc.push('=');
+                }
+            }
+            acc
+        })
+}
+```
