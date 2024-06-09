@@ -2,6 +2,8 @@
 title: 'Writing Math With Hugo'
 date: '2024-03-26T09:08:10+11:00'
 math: 'katex'
+tags:
+  - math
 ---
 
 I initially attempted to follow the setup of [mathematics in content management section of
