@@ -106,7 +106,7 @@ fn main() {
 Rust is able to store each character in a string within a byte (7 bits for each character)! This makes it useful as we can cast characters in a string into `u8`.
 
 ### Converting a Hex encoded string into base64 encoded
-The very first step is to convert our hex string into its correct integer representation. For example, the character '4' should be converted to a 4 (decimal) and an 'f' or 'F' should be a 15 (decimal). We can do this by grabbing the byte value of the character '0' for numbers, and subtracting it to any character numbers. Likewise, we do the same for lowercase and uppercase characters; grab the byte value of the character 'a' for lowercase and byte value of 'A' for uppercase and subtract it to the corresponding lower or uppercase character, and then we add 10. We add 10 since 'a' or 'A' is the number 10 (decimal) in hexadecimal. 
+The very first step is to convert our hex string into its correct integer representation. For example, the character '4' should be converted to a 4 (decimal) and an 'f' or 'F' should be a 15 (decimal). We can do this by grabbing the byte value of the character '0' for numbers, and subtracting it to any character numbers. Likewise, we do the same for lowercase and uppercase characters; grab the byte value of the character 'a' for lowercase and byte value of 'A' for uppercase and subtract it to the corresponding lower or uppercase character, and then we add 10. We add 10 since 'a' or 'A' is the number 10 (decimal) in hexadecimal. We can create a function as such:
 
 ```rust
 /// Calculate the corresponding hex character into a number
@@ -120,9 +120,9 @@ pub fn hex_value(c: &u8) -> Result<u8, &'static str> {
 }
 ```
 
-I opted to wrap the `return` value in a `Result<T, E>` generic (I could have opten for `Option<T>`) as I believe this is correct return type. If we pass a `u8` type that can't be matched to a hexadecimal character, then it should throw an error and let the caller handle that case.
+The `hex_value` function takes a `u8` type and matches it based on a range of byte values. If the byte value is within the range, then it the corresponding hexadecimal integer wrapped in a `Result<T, E>` generic. If the byte value is not within the range, then it will throw an error and let the caller handle that case.
 
-Below is a partial implementation of the `hex_to_base64` function where we print the hexadecimal representation of each byte in the string.
+Below is a partial implementation of the `hex_to_base64` function where we convert the hexadecimal character into an integer and print the hexadecimal representation of each byte in the string. [Link to Rust playground code](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=cdd806d1baaf88b4716441df991c4a99)
 
 ```rust
 pub fn hex_to_base64(hex_string: &str) {
@@ -132,24 +132,65 @@ pub fn hex_to_base64(hex_string: &str) {
         .map(|byte| hex_value(byte).expect("Invalid hex character"))
         .collect::<Vec<u8>>()
         .iter()
-        .for_each(|byte| println!("{:?} - {:b}", byte));
+        .for_each(|byte| println!("{:?} - {:b}", byte, byte));
 }
-
 ```
 
-Here is an illustration of the code above for converting a hexadecimal character to its bit representation.
-![Image alt](images/bit-representation-of-hex-characters.png)
+Here is an illustration of the code above for converting a hexadecimal character to its 4 bit representation.
+
+{{< figure
+    src="images/bit-representation-of-hex-characters.png"
+    alt="Bit representation of hexadecimal characters"
+    caption="Bit representation of hexadecimal characters - created in Excalidraw"
+>}}
+
+We now have an array of bytes (`u8`) that we can convert into a base64 encoded string. Notice that the entire 8 bit of a `u8` is not used, rather only the first 4 bits are used. This is because hexadecimal fits into 4 bits. To convert from hexadecimal to base64, we take 3 chunks of 4 bits and convert into 2 chunks of 6 bits. The [Wikipedia for Base64](https://en.wikipedia.org/wiki/Base64) illustrates that Base64 chunks the bits into sextets (6 bits) groups and uses the sextets to encode the characters. We can use bit manipulation to convert 3 chunks of 4 bits into 2 chunks of 6 bits, and deal with the remaining bits in the last chunk as padding.
+
+To convert 3 chunks of 4 bits into 2 chunks of 6 bits, we can use bit manipulation to shift the bits into the correct positions.
+
+We calculate the first 6 bit chunk from the following. The first chunk of 4 bits is left shited by 2, and the second chunk of 4 bits is right shifted by 2. We take the sum of the two manipulated bits and this gives us the first 6 bits of the 6 bit chunk. Here is an illustration for the bit manipulation explained above:
+
+{{< figure
+    src="images/first-6-bit-chunk-conversion.png"
+    alt="First 6 bit chunk conversion of the first two 4 bit hexadecimal characters"
+    caption="First 6 bit chunk conversion of the first two 4 bit hexadecimal characters - created in Excalidraw"
+>}}
+
+Consequently the second 6 bit chunk is is first calculated by taking the second element of the 4 bit chunk and applying the logical AND operator with the mask `0b11` which is 3 in binary. The result of this operation gives us the first 2 bits, which is then left shifted by 4 bits. Only then do we add the value of the third element of the 4 bit chunk to the result in the previous step. Here is an illustration of the following:
+
+{{< figure
+    src="images/second-6-bit-chunk-conversion.png"
+    alt="Second 6 bit chunk conversion of the second and third two 4 bit hexadecimal characters"
+    caption="Second 6 bit chunk conversion of the second and third two 4 bit hexadecimal characters - created in Excalidraw"
+>}}
+
+What if the chunk is not of length 3? In that case we have different approaches for chunk lengths of 1 and 2. For chunk length of 1, we shift left shift the element by 2 bits. For chunk length of 2, we apply the same procedure for a chunk length of 3, except for the calculation of the second 6 bit chunk. In this case, there is no third element in the 4 bit chunk, so we simply take the second element with the appropriate bit manipulation without adding anything to the result.
+
+The final step is to handle the padding. We can do this by taking the length of the final string and dividing it by 4. If the remainder is greater than 0, then we need to add the appropriate number of padding characters to the end of the string. Here the padding character is `'='`.
+
+{{< figure
+    src="images/hex-bits-to-base64.png"
+    alt="Converting the hexadecimal bits into base64 characters with padding"
+    caption="Converting the hexadecimal bits into base64 characters with padding - created in Excalidraw"
+    width="600"
+>}}
 
 
-We now have an array of bytes (`u8`) that we can convert into a base64 encoded string. Notice that the entire 8 bit of a `u8` is not used, rather only the first 4 bits are used. This is because hexadecimal fits into 4 bits. To convert from hexadecimal to base64, we take 3 chunks of 4 bits and convert into 2 chunks of 6 bits. The [Wikipedia page for Base64](https://en.wikipedia.org/wiki/Base64) illustrates that Base64 chunks the bits into sextets (6 bits) groups and uses the sextets to encode the characters. We can use bit manipulation to convert 3 chunks of 4 bits into 2 chunks of 6 bits, and deal with the remaining bits in the last chunk as padding. Here is the full implementation of the `hex_to_base64` function.
-
-Here is an illustration for the remainder of the code for converting a hexadecimal character from its bit representation to its base64 character.
-![Image alt](images/hex-bits-to-base64.png)
+Here is the full implementation of the `hex_to_base64` function.
 ```rust
+#![allow(unused)]
+fn main() {
+    let hex_string = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d";
+    let output = "SSdtIGtpbGxpbmcgeW91ciBicmFpbiBsaWtlIGEgcG9pc29ub3VzIG11c2hyb29t";
+    let base64_str = hex_to_base64(&hex_string);
+    println!("{:?}", base64_str);
+    assert_eq!(String::from(output), base64_str);
+}
 
+/// Convert a hexadecimal encoded string into base64 encoded string. [Link to Rust playground code](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=2020f5c0d7b69ecfab7d2387e18d39c9)
 pub fn hex_to_base64(hex_string: &str) -> String {
     let base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
-    hex_string
+    let mut base64_str = hex_string
         .as_bytes()
         .iter()
         .map(|byte| hex_value(byte).expect("Invalid hex character"))
@@ -182,14 +223,6 @@ pub fn hex_to_base64(hex_string: &str) -> String {
                     .expect("No base64 char found");
                 acc.push(first_char);
                 acc.push(second_char);
-                let padding_amount = if acc.len() % 4 == 0 {
-                    0
-                } else {
-                    4 - (acc.len() % 4)
-                };
-                for _ in 0..padding_amount {
-                    acc.push('=');
-                }
             } else {
                 let first_index: usize = (chunk[0] << 2).into();
                 let first_char = base64_chars
@@ -197,16 +230,27 @@ pub fn hex_to_base64(hex_string: &str) -> String {
                     .nth(first_index) 
                     .expect("No base64 char found");
                 acc.push(first_char);
-                let padding_amount = if acc.len() % 4 == 0 {
-                    0
-                } else {
-                    4 - (acc.len() % 4)
-                };
-                for _ in 0..padding_amount {
-                    acc.push('=');
-                }
             }
             acc
-        })
+        });
+    let padding_amount = if base64_str.len() % 4 == 0 {
+        0
+    } else {
+        4 - (base64_str.len() % 4)
+    };
+    for _ in 0..padding_amount {
+        base64_str.push('=');
+    }
+    base64_str
+}
+
+/// Calculate the corresponding hex character into a number
+pub fn hex_value(c: &u8) -> Result<u8, &'static str> {
+    match c {
+        b'a'..=b'f' => Ok(c - b'a' + 10),
+        b'A'..=b'F' => Ok(c - b'A' + 10),
+        b'0'..=b'9' => Ok(c - b'0'),
+        _ => Err("Invalid hex character"),
+    }
 }
 ```
