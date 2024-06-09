@@ -120,7 +120,7 @@ pub fn hex_value(c: &u8) -> Result<u8, &'static str> {
 }
 ```
 
-The `hex_value` function takes a `u8` type and matches it based on a range of byte values. If the byte value is within the range, then it the corresponding hexadecimal integer wrapped in a `Result<T, E>` generic. If the byte value is not within the range, then it will throw an error and let the caller handle that case.
+The `hex_value` function takes a `u8` type and matches it based on a range of byte values. If the byte value is within the range of characters suitable for hexadecimal characters, then the corresponding hexadecimal integer is calculated and wrapped in a `Result<T, E>` generic. If the byte value is not within the range, then it will throw an error and we let the caller handle the error.
 
 Below is a partial implementation of the `hex_to_base64` function where we convert the hexadecimal character into an integer and print the hexadecimal representation of each byte in the string. [Link to Rust playground code](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=cdd806d1baaf88b4716441df991c4a99)
 
@@ -144,7 +144,7 @@ Here is an illustration of the code above for converting a hexadecimal character
     caption="Bit representation of hexadecimal characters - created in Excalidraw"
 >}}
 
-We now have an array of bytes (`u8`) that we can convert into a base64 encoded string. Notice that the entire 8 bit of a `u8` is not used, rather only the first 4 bits are used. This is because hexadecimal fits into 4 bits. To convert from hexadecimal to base64, we take 3 chunks of 4 bits and convert into 2 chunks of 6 bits. The [Wikipedia for Base64](https://en.wikipedia.org/wiki/Base64) illustrates that Base64 chunks the bits into sextets (6 bits) groups and uses the sextets to encode the characters. We can use bit manipulation to convert 3 chunks of 4 bits into 2 chunks of 6 bits, and deal with the remaining bits in the last chunk as padding.
+We now have an array of bytes (`u8`) that we can convert into a base64 encoded string. Notice that the entire 8 bit of a `u8` is not used, rather only the first 4 bits are used. This is because hexadecimal fits into 4 bits. To convert from hexadecimal to base64, we take 3 chunks of 4 bits and convert into 2 chunks of 6 bits. The [Wikipedia for Base64](https://en.wikipedia.org/wiki/Base64) illustrates that Base64 chunks the bits into sextet (6 bits) groups and uses the sextets to encode the characters. We can use bit manipulation to convert 3 chunks of 4 bits into 2 chunks of 6 bits, and deal with the remaining bits in the last chunk as padding.
 
 To convert 3 chunks of 4 bits into 2 chunks of 6 bits, we can use bit manipulation to shift the bits into the correct positions.
 
