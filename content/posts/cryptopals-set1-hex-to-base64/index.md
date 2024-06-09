@@ -1,7 +1,6 @@
 ---
 title: 'Cryptopals Set-1 Convert Hex to Base64'
-date: 2024-05-08T19:15:03+10:00
-draft: true
+date: 2024-06-09T18:58:03+10:00
 math: 'katex'
 tags:
   - math
