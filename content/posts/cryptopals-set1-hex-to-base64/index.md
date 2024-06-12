@@ -1,5 +1,5 @@
 ---
-title: 'Cryptopals Set-1 Convert Hex to Base64'
+title: 'Cryptopals S1 - Challenge 1 Convert Hex to Base64'
 date: 2024-06-09T18:58:03+10:00
 math: 'katex'
 tags:
