@@ -53,10 +53,10 @@ pub fn convert_hex_to_base64(hex: &str) -> String {
 }
 ```
 
-Cool! We used a few external crates and use their API. But how does it work?
+Cool! We used a few external crates and used their API, but how does it work?
 
 ## Doing it all from scratch
-From here on let's permit ourselves to only use the standard library without any external crates.
+Let's only permit ourselves to use the standard library without any external crates.
 
 ### Understanding how characters and strings are represented
 As a programmer I think it's important to understand how 1's and 0's are converted into the awesome text that we see on our devices. Here is a very good primer into string encodings - [The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)](https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/). The Rust book also goes into detail with how [Rust defines a string](https://doc.rust-lang.org/beta/book/ch08-02-strings.html) and its definition is used as the foundation for converting a hex string into a base64 encoded string.
@@ -175,7 +175,7 @@ The final step is to handle the padding. We can do this by taking the length of 
 >}}
 
 
-Here is the full implementation of the `hex_to_base64` function.
+Here is the full implementation of the `hex_to_base64` function. [Link to Rust playground code](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=2020f5c0d7b69ecfab7d2387e18d39c9)
 ```rust
 #![allow(unused)]
 fn main() {
@@ -186,7 +186,7 @@ fn main() {
     assert_eq!(String::from(output), base64_str);
 }
 
-/// Convert a hexadecimal encoded string into base64 encoded string. [Link to Rust playground code](https://play.rust-lang.org/?version=stable&mode=debug&edition=2021&gist=2020f5c0d7b69ecfab7d2387e18d39c9)
+/// Convert a hexadecimal encoded string into base64 encoded string.
 pub fn hex_to_base64(hex_string: &str) -> String {
     let base64_chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
     let mut base64_str = hex_string
@@ -253,3 +253,10 @@ pub fn hex_value(c: &u8) -> Result<u8, &'static str> {
     }
 }
 ```
+
+Here you can [view the full respoitory in Github](https://github.com/Jr-14/cryptopals-rust)
+
+# Closing Remarks
+Uncovering the magic behind how to convert a hex encoded string into a base64 encoded string has been satisfying.
+Majority of Cryptopal posts for this challenge leverages existing libraries, but I believe this challenge is best tackled
+when you attempt to understand how encoding and decoding works for both hex and base64.
