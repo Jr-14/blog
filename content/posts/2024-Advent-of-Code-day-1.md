@@ -1,7 +1,6 @@
 ---
 title: '2024 Advent of Code Day 1'
 date: 2024-12-01T19:25:36+11:00
-draft: true
 math: 'katex'
 tags:
   - 'Advent of Code'
