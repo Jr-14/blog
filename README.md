@@ -7,6 +7,10 @@ Another web repository but for a blog
 git clone --recurse-submodules <REPO_URL>
 ```
 
+## Dependencies
+- [golang](https://go.dev/doc/install) as dependency for hugo.
+- [Hugo](https://gohugo.io/) as the static site generator for the blog. I think we use the extended edition? 
+
 # Development
 
 ## Starting development server
