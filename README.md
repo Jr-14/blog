@@ -13,6 +13,23 @@ git clone --recurse-submodules <REPO_URL>
 
 # Development
 
+## Updating dependencies
+**PaperMod** for themes:
+This blog uses [hugo-PaperMod](https://github.com/adityatelange/hugo-PaperMod) as its theme. [Updating and installing
+can be found here.](https://github.com/adityatelange/hugo-PaperMod)
+
+TLDR...
+***INSTALL***: Inside the repo
+```bash
+git clone https://github.com/adityatelange/hugo-PaperMod themes/PaperMod --depth=1
+```
+
+***UPDATE***: Inside the repo
+```bash
+cd themes/PaperMod
+git pull
+```
+
 ## Starting development server
 Hugo contents generally have the `draft` front matter set to `true`. To include `draft` contents run one of:
 ```
