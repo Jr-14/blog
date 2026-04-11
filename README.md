@@ -4,7 +4,7 @@ Another web repository but for a blog
 # Getting started
 **IMPORTANT** Make sure you clone this repo correctly as it relies on [papertheme](https://themes.gohugo.io/themes/hugo-paper/)
 ```
-git clone --recurse-submodules <REPO_URL>
+git clone --recurse-submodules https://github.com/jr-14/blog
 ```
 
 ## Dependencies
@@ -34,7 +34,7 @@ git pull
 Hugo contents generally have the `draft` front matter set to `true`. To include `draft` contents run one of:
 ```
 hugo server --buildDrafts
-hugo server --D
+hugo server -D
 ```
 
 ## Adding a content
